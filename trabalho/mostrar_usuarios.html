@@ -394,13 +394,20 @@ function confirmarExclusaoUsuario() {
     alert('Usuário excluído (simulado) com sucesso!');
     fecharPopupExcluirUsuario();
 }
+        function abrirMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'flex';
+        }
+
+        function fecharMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'none';
+        }
+
         function confirmarLogout() {
             const confirmacao = confirm("Tem certeza que deseja sair?");
             if (confirmacao) {
-                window.location.href = "login.html"; 
+                window.location.href = "index.html"; 
             }
         }
-
 
         // Renderiza os usuários ao carregar a página
         document.addEventListener('DOMContentLoaded', renderizarUsuarios);
