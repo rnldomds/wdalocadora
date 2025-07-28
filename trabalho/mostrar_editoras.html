@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciar Editoras - Editor - Locadora</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="estilos_dashboard_editor.css" />
+  <link rel="stylesheet" href="estilos_mostrar_livros_editor.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <div class="logo-sidebar">
+      <img src="wda_group_logo.png" alt="Logo wda GROUP">
+      <span>LOCADORA DE LIVROS</span>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li class="menu-item menu-item-button">
+          <a href="mostrar_locatarios.html"><i class="fas fa-users"></i><span>Mostrar Locatários</span></a>
+        </li>
+        <li class="menu-item menu-item-button">
+          <a href="mostrar_livros_editor.html"><i class="fas fa-book"></i><span>Mostrar Livros</span></a>
+        </li>
+       <li class="menu-item menu-item-button active">
+          <a href="mostrar_editoras.html"><i class="fas fa-building"></i><span>Mostrar Editoras</span></a>
+        </li> 
+        <li class="menu-item menu-item-button">
+          <a href="mostrar_usuarios.html"><i class="fas fa-user"></i><span>Mostrar Usuários</span></a>
+        </li>
+        <li class="menu-item menu-item-button">
+          <a href="mostrar_alugueis.html"><i class="fas fa-handshake"></i><span>Mostrar Aluguéis</span></a>
+        </li>
+        <li class="menu-item-divider"></li>
+        <li class="menu-item">
+          <a href="dashboard_editor.html"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+        </li>
+        <li class="menu-item">
+          <a href="#" onclick="abrirPesquisa()"><i class="fas fa-search"></i><span>Pesquisar</span></a>
+        </li>
+        <li class="menu-item">
+          <a href="#" onclick="abrirMinhaConta()"><i class="fas fa-user-circle"></i><span>Conta de Usuário</span></a>
+        </li>
+        <li class="menu-item menu-item-sair">
+          <a href="#" onclick="confirmarLogout()"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="main-header">
+      <h2><i class="fas fa-building header-icon"></i> MOSTRANDO EDITORAS</h2>
+      <p>Gerencie o catálogo de editoras da locadora.</p>
+    </header>
+
+    <div class="content-section">
+      <div class="action-bar">
+        <button class="add-button" onclick="abrirPopupNovaEditora()"><i class="fas fa-plus-circle"></i> Nova Editora</button>
+        <div class="search-input-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="inputPesquisaEditora" onkeyup="pesquisarEditorasGrid()" placeholder="Pesquisar editoras por nome...">
+        </div>
+      </div><div class="table-responsive">
+<table id="tabelaEditoras" class="data-table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Site</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Editora Rocco</td>
+      <td>contato@rocco.com.br</td>
+      <td>(21) 1111-2222</td>
+      <td>www.rocco.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Companhia das Letras</td>
+      <td>atendimento@companhiadasletras.com.br</td>
+      <td>(11) 2222-3333</td>
+      <td>www.companhiadasletras.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Nova Fronteira</td>
+      <td>contato@novafronteira.com.br</td>
+      <td>(21) 3333-4444</td>
+      <td>www.novafronteira.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Record</td>
+      <td>editorarecord@record.com.br</td>
+      <td>(21) 4444-5555</td>
+      <td>www.record.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Martins Fontes</td>
+      <td>contato@martinsfontes.com.br</td>
+      <td>(11) 5555-6666</td>
+      <td>www.martinsfontes.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Arqueiro</td>
+      <td>contato@arqueiro.com.br</td>
+      <td>(11) 7777-8888</td>
+      <td>www.arqueiro.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Penguin</td>
+      <td>contato@penguin.com.br</td>
+      <td>(11) 9999-0000</td>
+      <td>www.penguin.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Agir</td>
+      <td>suporte@agir.com.br</td>
+      <td>(21) 1010-2020</td>
+      <td>www.agir.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Intrínseca</td>
+      <td>contato@intrinseca.com.br</td>
+      <td>(21) 6060-7070</td>
+      <td>www.intrinseca.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Biblioteca Azul</td>
+      <td>contato@bibliotecazul.com.br</td>
+      <td>(11) 3434-5656</td>
+      <td>www.bibliotecazul.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>L&PM</td>
+      <td>contato@lpm.com.br</td>
+      <td>(51) 3232-2121</td>
+      <td>www.lpm.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>José Olympio</td>
+      <td>contato@joseolympio.com.br</td>
+      <td>(21) 2121-3232</td>
+      <td>www.joseolympio.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Martin Claret</td>
+      <td>contato@martinclaret.com.br</td>
+      <td>(11) 4141-5151</td>
+      <td>www.martinclaret.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>Bertrand Brasil</td>
+      <td>contato@bertrandbrasil.com.br</td>
+      <td>(21) 8181-9292</td>
+      <td>www.bertrandbrasil.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td>WMF Martins Fontes</td>
+      <td>contato@wmfmartinsfontes.com.br</td>
+      <td>(11) 7373-8484</td>
+      <td>www.wmfmartinsfontes.com.br</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)"><i class="fas fa-edit"></i></button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div id="paginacao" class="paginacao"></div>
+<div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros (Sistema)</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o nome do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+                </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Minha Conta (Editor)</h3>
+            <p><strong>Nome:</strong> [Nome do Editor]</p>
+            <p><strong>Email:</strong> [email.editor@exemplo.com]</p>
+            <p><strong>Cargo:</strong> Editor/Funcionário</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+<div id="popupNovaEditora" class="modal">
+    <div class="modal-content">
+        <h3>Cadastrar Nova Editora</h3>
+        <label for="novaNomeEditora">Nome da Editora:</label>
+        <input type="text" id="novaNomeEditora" required><br>
+        <label for="novaEmailEditora">Email:</label>
+        <input type="text" id="novaEmailEditora" required><br>
+        <label for="novaTelefoneEditora">Telefone:</label>
+        <input type="text" id="novaTelefoneEditora" required><br>
+        <label for="novaSiteEditora">Site:</label>
+        <input type="text" id="novaSiteEditora" required><br>
+        <button onclick="salvarNovaEditora()" class="modal-action-button primary-button">Salvar</button>
+        <button onclick="fecharPopupNovaEditora()" class="modal-action-button secondary-button">Cancelar</button>
+    </div>
+</div>
+<div id="popupEditarEditora" class="modal">
+    <div class="modal-content">
+        <h3>Editar Editora</h3>
+        <input type="hidden" id="editEditoraRowIndex">
+        <label for="editNomeEditora">Nome da Editora:</label>
+        <input type="text" id="editNomeEditora" required><br>
+        <label for="editEmailEditora">Email:</label>
+        <input type="text" id="editEmailEditora" required><br>
+        <label for="editTelefoneEditora">Telefone:</label>
+        <input type="text" id="editTelefoneEditora" required><br>
+        <label for="editSiteEditora">Site:</label>
+        <input type="text" id="editSiteEditora" required><br>
+        <button onclick="salvarEdicaoEditora()" class="modal-action-button primary-button">Salvar Edição</button>
+        <button onclick="fecharPopupEditarEditora()" class="modal-action-button secondary-button">Cancelar</button>
+    </div>
+</div>
+<div id="popupExcluirEditora" class="modal">
+    <div class="modal-content">
+        <h3>Excluir Editora</h3>
+        <p>Tem certeza que deseja excluir a editora: <strong id="EditoraExcluirNome"></strong>?</p>
+        <input type="hidden" id="excluirEditoraRowIndex">
+        <button onclick="confirmarExclusaoEditora()" class="modal-action-button delete-button">Sim, Excluir</button>
+        <button onclick="fecharPopupExcluirEditora()" class="modal-action-button secondary-button">Não, Cancelar</button>
+    </div>
+</div>
+
+<script src="common.js"></script> <script>
+function pesquisarEditorasGrid() {
+    const input = document.getElementById('inputPesquisaEditora').value.toLowerCase();
+    const tabela = document.getElementById('tabelaEditoras');
+    const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    for (let i = 0; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        let found = false;
+
+        if (celulas[0].textContent.toLowerCase().includes(input) || 
+            celulas[1].textContent.toLowerCase().includes(input) || 
+            celulas[2].textContent.toLowerCase().includes(input) || 
+            celulas[3].textContent.toLowerCase().includes(input)) { 
+            found = true;
+        }
+
+        linhas[i].style.display = found ? "" : "none";
+    }
+}
+
+const linhasPorPagina = 5;
+  let paginaAtual = 1;
+
+  function paginarTabela() {
+    const tabela = document.getElementById("tabelaEditoras");
+    const linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    const totalPaginas = Math.ceil(linhas.length / linhasPorPagina);
+
+    // Oculta todas as linhas
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = "none";
+    }
+
+    // Mostra apenas as da página atual
+    const inicio = (paginaAtual - 1) * linhasPorPagina;
+    const fim = inicio + linhasPorPagina;
+    for (let i = inicio; i < fim && i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+
+    // Cria os botões de navegação
+    const paginacaoDiv = document.getElementById("paginacao");
+    paginacaoDiv.innerHTML = "";
+
+    for (let i = 1; i <= totalPaginas; i++) {
+      const botao = document.createElement("button");
+      botao.textContent = i;
+      botao.className = i === paginaAtual ? "pagina ativa" : "pagina";
+      botao.onclick = () => {
+        paginaAtual = i;
+        paginarTabela();
+      };
+      paginacaoDiv.appendChild(botao);
+    }
+  }
+
+  // Iniciar a paginação após carregar a página
+  window.onload = function () {
+    paginarTabela();
+  };
+ function abrirPopupNovaEditora() {
+    document.getElementById('popupNovaEditora').style.display = 'flex';
+
+    document.getElementById('novaNomeEditora').value = '';
+    document.getElementById('novaEmailEditora').value = '';
+    document.getElementById('novaTelefoneEditora').value = '';
+    document.getElementById('novaSiteEditora').value = '';
+}
+
+function fecharPopupNovaEditora() {
+    document.getElementById('popupNovaEditora').style.display = 'none';
+}
+
+function salvarNovaEditora() {
+    const nome = document.getElementById('novaNomeEditora').value;
+    const email = document.getElementById('novaEmailEditora').value;
+    const telefone = document.getElementById('novaTelefoneEditora').value;
+    const site = document.getElementById('novaSiteEditora').value;
+
+    if (nome && email && telefone && site) {
+        const tabela = document.getElementById('tabelaEditoras').getElementsByTagName('tbody')[0];
+        const newRow = tabela.insertRow();
+
+        newRow.insertCell(0).textContent = nome;
+        newRow.insertCell(1).textContent = email;
+        newRow.insertCell(2).textContent = telefone;
+        newRow.insertCell(3).textContent = site;
+
+        const acoesCell = newRow.insertCell(4);
+        acoesCell.innerHTML = `
+            <button class="action-button edit-button" onclick="abrirPopupEditarEditora(this)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="action-button delete-button" onclick="abrirPopupExcluirEditora(this)">
+                <i class="fas fa-trash-alt"></i>
+            </button>`;
+
+        alert('Editora cadastrada (simulado) com sucesso!');
+        fecharPopupNovaEditora();
+    } else {
+        alert('Por favor, preencha todos os campos para cadastrar a editora.');
+    }
+}
+
+function abrirPopupEditarEditora(buttonElement) {
+    document.getElementById('popupEditarEditora').style.display = 'flex';
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+
+    document.getElementById('editEditoraRowIndex').value = rowIndex;
+
+    document.getElementById('editNomeEditora').value = row.cells[0].textContent;
+    document.getElementById('editEmailEditora').value = row.cells[1].textContent;
+    document.getElementById('editTelefoneEditora').value = row.cells[2].textContent;
+    document.getElementById('editSiteEditora').value = row.cells[3].textContent;
+}
+
+function fecharPopupEditarEditora() {
+    document.getElementById('popupEditarEditora').style.display = 'none';
+}
+
+function salvarEdicaoEditora() {
+    const rowIndex = document.getElementById('editEditoraRowIndex').value;
+    const tabela = document.getElementById('tabelaEditoras').getElementsByTagName('tbody')[0];
+    const row = tabela.rows[rowIndex];
+
+    const nome = document.getElementById('editNomeEditora').value;
+    const email = document.getElementById('editEmailEditora').value;
+    const telefone = document.getElementById('editTelefoneEditora').value;
+    const site = document.getElementById('editSiteEditora').value;
+
+    if (nome && email && telefone && site) {
+        row.cells[0].textContent = nome;
+        row.cells[1].textContent = email;
+        row.cells[2].textContent = telefone;
+        row.cells[3].textContent = site;
+
+        alert('Editora editada (simulado) com sucesso!');
+        fecharPopupEditarEditora();
+    } else {
+        alert('Por favor, preencha todos os campos para editar a editora.');
+    }
+}
+
+function abrirPopupExcluirEditora(buttonElement) {
+    document.getElementById('popupExcluirEditora').style.display = 'flex';
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+    const nomeEditora = row.cells[0].textContent;
+
+    document.getElementById('excluirEditoraRowIndex').value = rowIndex;
+    document.getElementById('EditoraExcluirNome').textContent = nomeEditora;
+}
+
+function fecharPopupExcluirEditora() {
+    document.getElementById('popupExcluirEditora').style.display = 'none';
+}
+
+function confirmarExclusaoEditora() {
+    const rowIndex = document.getElementById('excluirEditoraRowIndex').value;
+    const tabela = document.getElementById('tabelaEditoras').getElementsByTagName('tbody')[0];
+    tabela.deleteRow(rowIndex);
+
+    alert('Editora excluída (simulado) com sucesso!');
+    fecharPopupExcluirEditora();
+}
+
+</script>
+</body>
+</html>

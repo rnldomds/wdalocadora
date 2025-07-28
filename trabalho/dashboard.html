@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Leitor - Locadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos_dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <img src="wda_group_logo.png" alt="Logo wda GROUP">
+                <span>LOCADORA DE LIVROS</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item active">
+                        <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="livros.html">
+                            <i class="fas fa-book"></i> <span>Livros</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirPesquisa()">
+                            <i class="fas fa-search"></i> <span>Pesquisar</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirMinhaConta()">
+                            <i class="fas fa-user-circle"></i> <span>Minha Conta</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-sair">
+                        <a href="#" onclick="confirmarLogout()">
+                            <i class="fas fa-sign-out-alt"></i> <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+           <header class="main-header">
+    <h2>
+        <img src="quadrados.png" alt="Ícone Dashboard" class="dashboard-icon">
+        Dashboard
+    </h2>
+    <p>Veja seus livros emprestados, atrasados ou devolvidos e também seu histórico.</p>
+</header>
+
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="mudarAba('emprestados', this)">Emprestados</button>
+                    <button class="tab-button" onclick="mudarAba('atrasados', this)">Atrasados</button>
+                    <button class="tab-button" onclick="mudarAba('devolvidos', this)">Devolvidos</button>
+                    <button class="tab-button" onclick="mudarAba('historico', this)">Histórico</button>
+                </div>
+
+                <div id="emprestados" class="tab-content active">
+                    <h3>Livros Emprestados:</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome do livro</th>
+                                    <th>Editora</th>
+                                    <th>Empréstimo</th>
+                                    <th>Data de devolução</th>
+                                    <th>Código do livro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>O Senhor dos Anéis: A Sociedade do Anel – J.R.R. Tolkien</td>
+                                    <td>Martins Fontes</td>
+                                    <td>18/06/2025</td>
+                                    <td>02/07/2025</td>
+                                    <td>007</td>
+                                </tr>
+                                <tr>
+                                    <td>A Revolução dos Bichos – George Orwell</td>
+                                    <td>Companhia das Letras</td>
+                                    <td>05/06/2025</td>
+                                    <td>19/06/2025</td>
+                                    <td>006</td>
+                                </tr>
+                                <tr>
+                                    <td>Harry Potter e a Pedra Filosofal – J.K. Rowling</td>
+                                    <td>Rocco</td>
+                                    <td>10/06/2025</td>
+                                    <td>20/06/2025</td>
+                                    <td>005</td>
+                                </tr>
+                                <tr>
+                                    <td>Capitães da Areia – Jorge Amado</td>
+                                    <td>Companhia das Letras</td>
+                                    <td>30/06/2025</td>
+                                    <td>14/07/2025</td>
+                                    <td>004</td>
+                                </tr>
+                                <tr>
+                                    <td>O Pequeno Príncipe – Antoine de Saint-Exupéry</td>
+                                    <td>Agir</td>
+                                    <td>25/06/2025</td>
+                                    <td>09/07/2025</td>
+                                    <td>003</td>
+                                </tr>
+                                <tr>
+                                    <td>1984 – George Orwell</td>
+                                    <td>Companhia das Letras</td>
+                                    <td>15/05/2025</td>
+                                    <td>29/05/2025</td>
+                                    <td>002</td>
+                                </tr>
+                                <tr>
+                                    <td>Dom Casmurro – Machado de Assis</td>
+                                    <td>Editora Ática</td>
+                                    <td>10/06/2025</td>
+                                    <td>24/06/2025</td>
+                                    <td>001</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="atrasados" class="tab-content">
+                    <h3>Livros Atrasados:</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome do livro</th>
+                                    <th>Editora</th>
+                                    <th>Empréstimo</th>
+                                    <th>Data de devolução</th>
+                                    <th>Código do livro</th>
+                                    <th>Dias atrasados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ensaio sobre a Cegueira – José Saramago</td>
+                                    <td>Companhia das Letras</td>
+                                    <td>01/06/2025</td>
+                                    <td>15/06/2025</td>
+                                    <td>011</td>
+                                    <td>14 dias</td>
+                                </tr>
+                                <tr>
+                                    <td>A Metamorfose – Franz Kafka</td>
+                                    <td>L&PM Editores</td>
+                                    <td>25/05/2025</td>
+                                    <td>08/06/2025</td>
+                                    <td>012</td>
+                                    <td>21 dias</td>
+                                </tr>
+                                <tr>
+                                    <td>Cem Anos de Solidão – Gabriel Garcia Márquez</td>
+                                    <td>Record</td>
+                                    <td>15/05/2025</td>
+                                    <td>30/05/2025</td>
+                                    <td>015</td>
+                                    <td>30 dias</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="devolvidos" class="tab-content">
+                    <h3>Livros Devolvidos:</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome do livro</th>
+                                    <th>Editora</th>
+                                    <th>Empréstimo</th>
+                                    <th>Data de devolução</th>
+                                    <th>Código do livro</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>O Sol é Para Todos – Harper Lee</td>
+                                    <td>José Olympio</td>
+                                    <td>05/06/2025</td>
+                                    <td>18/06/2025</td>
+                                    <td>021</td>
+                                    <td>Devolvido no prazo</td>
+                                </tr>
+                                <tr>
+                                    <td>Percy Jackson e o Ladrão de Raios – Rick Riordan</td>
+                                    <td>Intrínseca</td>
+                                    <td>02/06/2025</td>
+                                    <td>16/06/2025</td>
+                                    <td>022</td>
+                                    <td>Devolvido no prazo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="historico" class="tab-content">
+                    <h3>Histórico de Empréstimos:</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome do livro</th>
+                                    <th>Editora</th>
+                                    <th>Empréstimo</th>
+                                    <th>Data de devolução</th>
+                                    <th>Código do livro</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>O Alquimista – Paulo Coelho</td>
+                                    <td>Rocco</td>
+                                    <td>10/05/2025</td>
+                                    <td>24/05/2025</td>
+                                    <td>017</td>
+                                    <td>Atrasado</td>
+                                </tr>
+                                <tr>
+                                    <td>As Crônicas de Nárnia – C.S. Lewis</td>
+                                    <td>WMF Martins Fontes</td>
+                                    <td>03/06/2025</td>
+                                    <td>17/06/2025</td>
+                                    <td>027</td>
+                                    <td>Devolvido no prazo</td>
+                                </tr>
+                                <tr>
+                                    <td>Cem Anos de Solidão – Gabriel Garcia Márquez</td>
+                                    <td>Record</td>
+                                    <td>15/05/2025</td>
+                                    <td>30/05/2025</td>
+                                    <td>015</td>
+                                    <td>Atrasado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o nome do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+                </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Minha Conta</h3>
+            <p><strong>Nome:</strong> [Nome do Usuário]</p>
+            <p><strong>Email:</strong> [email@exemplo.com]</p>
+            <p><strong>Telefone:</strong> [telefone]</p>
+            <p><strong>Endereço:</strong> [endereço completo]</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Funções para controle de abas
+        function mudarAba(id, clickedButton) {
+            // Esconde todas as abas de conteúdo
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Remove a classe 'active' de todos os botões de aba
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostra a aba clicada e ativa o botão
+            document.getElementById(id).classList.add('active');
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+        }
+
+        // Funções para os pop-ups e logout
+        function abrirPesquisa() {
+            document.getElementById('popupPesquisa').style.display = 'flex'; // Usar flex para centralizar
+        }
+
+        function fecharPesquisa() {
+            document.getElementById('popupPesquisa').style.display = 'none';
+        }
+
+        function filtrarLivros() {
+            const termo = document.getElementById('campoPesquisa').value.toLowerCase();
+            const lista = document.getElementById('listaResultadosPesquisa');
+            lista.innerHTML = ''; // Limpa a lista atual
+
+            const livrosDisponiveis = [
+                "O Senhor dos Anéis: A Sociedade do Anel – J.R.R. Tolkien",
+                "A Revolução dos Bichos – George Orwell",
+                "Harry Potter e a Pedra Filosofal – J.K. Rowling",
+                "Capitães da Areia – Jorge Amado",
+                "O Pequeno Príncipe – Antoine de Saint-Exupéry",
+                "1984 – George Orwell",
+                "Dom Casmurro – Machado de Assis",
+                "Ensaio sobre a Cegueira – José Saramago",
+                "A Metamorfose – Franz Kafka",
+                "Cem Anos de Solidão – Gabriel Garcia Márquez",
+                "O Sol é Para Todos – Harper Lee",
+                "Percy Jackson e o Ladrão de Raios – Rick Riordan",
+                "O Alquimista – Paulo Coelho",
+                "As Crônicas de Nárnia – C.S. Lewis"
+            ];
+
+            const resultados = livrosDisponiveis.filter(livro => livro.toLowerCase().includes(termo));
+
+            if (resultados.length > 0) {
+                resultados.forEach(livro => {
+                    const li = document.createElement('li');
+                    li.textContent = livro;
+                    lista.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = "Nenhum livro encontrado.";
+                lista.appendChild(li);
+            }
+        }
+
+        function abrirMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'flex'; // Usar flex para centralizar
+        }
+
+        function fecharMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'none';
+        }
+
+        function confirmarLogout() {
+            const confirmacao = confirm("Tem certeza que deseja sair?");
+            if (confirmacao) {
+                window.location.href = "login.html"; // Redireciona para a página de login
+            }
+        }
+
+        // Garante que a primeira aba esteja ativa ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            mudarAba('emprestados', document.querySelector('.tab-button.active'));
+        });
+    </script>
+</body>
+</html>

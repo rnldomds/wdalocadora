@@ -1,0 +1,244 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #3ab5a3;
+}
+
+.container-geral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c8e80;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c8e80;
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+
+
+.caixa-login {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+   
+}
+
+
+
+.grupo-campo {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grupo-campo label {
+    display: block;
+    text-align: left;
+    position: relative;
+}
+
+.icone-campo {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    pointer-events: none;
+}
+
+
+.grupo-campo:nth-child(1) .icone-campo {
+    background-image: url('email.png');
+}
+
+
+.grupo-campo:nth-child(2) .icone-campo {
+    background-image: url('cadeado.png');
+}
+
+.grupo-campo input {
+    width: calc(100% - 35px);
+    padding: 12px 10px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: left;
+}
+
+.grupo-campo input::placeholder {
+    color: #aaa;
+}
+
+.grupo-campo input:focus {
+    border-color: #3ab5a3;
+}
+
+
+.esqueceu-senha {
+    display: block;
+    text-align: left;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    color: #777;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding-left: 0px;
+}
+
+.esqueceu-senha span {
+    font-weight: bold;
+    color: #3ab5a3;
+}
+
+.esqueceu-senha:hover {
+    text-decoration: underline;
+}
+
+
+.grupo-checkbox {
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding-left: 0px;
+}
+
+.grupo-checkbox label {
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.grupo-checkbox input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3ab5a3;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.grupo-checkbox input[type="radio"]:checked {
+    background-color: #3ab5a3;
+    border-color: #3ab5a3;
+}
+
+.grupo-checkbox input[type="radio"]:checked::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    display: block;
+}
+
+
+
+.botao-confirmar {
+    background-color: #2c8e80;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botao-confirmar:hover {
+    background-color: #237467;
+}
+
+
+.link-cadastro {
+    margin-top: 25px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.link-cadastro a {
+    color: #3ab5a3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-cadastro a:hover {
+    text-decoration: underline;
+}
+
+
+.container-logo {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.container-logo img {
+    max-width: 180px;
+    height: auto;
+   
+}
+
+
+@media (max-width: 480px) {
+    .caixa-login {
+        padding: 30px 20px;
+        width: 90%;
+    }
+}

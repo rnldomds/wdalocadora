@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Locadora de Livros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style-dashboard.css">
+</head>
+<body>
+  </div>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <img src="WDA GROUP LOGO (1).png" class="sidebar-logo" alt="Logo WDA">
+      <h3 class="menu-title">Menu</h3>
+      <ul class="menu-list">
+        <li class="menu-item active"><i class="fas fa-th-large"></i> Dashboard</li>
+        <li class="menu-item" id="pesquisar-btn"><i class="fas fa-search"></i> Pesquisar</li>
+        <li class="menu-item"><a href="livros.html" style="color: inherit; text-decoration: none;"><i class="fas fa-book"></i> Livros</a></li>
+        <li class="menu-item" id="conta-usuario-btn"><i class="fas fa-user"></i> Conta de Usuário</li>
+      </ul>
+      <div class="menu-bottom">
+        <button class="btn-sair"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        <hr />
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <h1 class="dashboard-title"><i class="fas fa-chart-bar"></i> Dashboard</h1>
+      <p class="dashboard-subtitle">Veja seus livros emprestados, atrasados ou devolvidos e também seu histórico</p>
+
+      <div class="tab-bar">
+        <button class="tab-item active" onclick="mudarAba('emprestados')">Emprestados</button>
+        <button class="tab-item" onclick="mudarAba('atrasados')">Atrasados</button>
+        <button class="tab-item" onclick="mudarAba('devolvidos')">Devolvidos</button>
+        <button class="tab-item" onclick="mudarAba('historico')">Histórico</button>
+      </div>
+
+      <div id="emprestados" class="aba-conteudo active">
+          <table>
+  <thead>
+    <tr>
+      <th>Nome do livro</th>
+      <th>Editora</th>
+      <th>Empréstimo</th>
+      <th>Data de devolução</th>
+      <th>Código do livro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O Senhor dos Anéis: A Sociedade do Anel – J.R.R. Tolkien</td>
+      <td>Martins Fontes</td>
+      <td>18/06/2025</td>
+      <td>02/07/2025</td>
+      <td>007</td>
+    </tr>
+    <tr>
+      <td>A Revolução dos Bichos – George Orwell</td>
+      <td>Companhia das Letras</td>
+      <td>05/06/2025</td>
+      <td>19/06/2025</td>
+      <td>006</td>
+    </tr>
+    <tr>
+      <td>Harry Potter e a Pedra Filosofal – J.K. Rowling</td>
+      <td>Rocco</td>
+      <td>10/06/2025</td>
+      <td>20/06/2025</td>
+      <td>005</td>
+    </tr>
+    <tr>
+      <td>Capitães da Areia – Jorge Amado</td>
+      <td>Companhia das Letras</td>
+      <td>30/06/2025</td>
+      <td>14/07/2025</td>
+      <td>004</td>
+    </tr>
+    <tr>
+      <td>O Pequeno Príncipe – Antoine de Saint-Exupéry</td>
+      <td>Agir</td>
+      <td>25/06/2025</td>
+      <td>09/07/2025</td>
+      <td>003</td>
+    </tr>
+    <tr>
+      <td>1984 – George Orwell</td>
+      <td>Companhia das Letras</td>
+      <td>15/05/2025</td>
+      <td>29/05/2025</td>
+      <td>002</td>
+    </tr>
+    <tr>
+      <td>Dom Casmurro – Machado de Assis</td>
+      <td>Editora Ática</td>
+      <td>10/06/2025</td>
+      <td>24/06/2025</td>
+      <td>001</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div id="atrasados" class="aba-conteudo">
+      <table>
+  <thead>
+    <tr>
+      <th>Nome do livro</th>
+      <th>Editora</th>
+      <th>Empréstimo</th>
+      <th>Data de devolução</th>
+      <th>Código do livro</th>
+      <th>Dias atrasados</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ensaio sobre a Cegueira – José Saramag</td>
+      <td>Companhia das Letras</td>
+      <td>01/06/2025</td>
+      <td>15/06/2025</td>
+      <td>011</td>
+      <td>14 dias</td>
+    </tr>
+    <tr>
+      <td>A Metamorfose – Franz Kafka</td>
+      <td>L&PM Editores</td>
+      <td>25/05/2025</td>
+      <td>08/06/2025</td>
+      <td>012</td>
+      <td>21 dias</td>
+    </tr>
+    <tr>
+      <td>Memórias Póstumas de Brás Cubas – Machado de Assis</td>
+      <td>Nova Fronteira</td>
+      <td>28/05/2025</td>
+      <td>11/06/2025</td>
+      <td>013</td>
+      <td>18 dias</td>
+    </tr>
+    <tr>
+      <td>It: A Coisa – Stephen King</td>
+      <td>Suma de Letras</td>
+      <td>20/05/2025</td>
+      <td>03/06/2025</td>
+      <td>014</td>
+      <td>26 dias</td>
+    </tr>
+    <tr>
+      <td>Cem Anos de Solidão – Gabriel Garcia Márquez</td>
+      <td>Record</td>
+      <td>15/05/2025</td>
+      <td>30/05/2025</td>
+      <td>015</td>
+      <td>30 dias</td>
+    </tr>
+    <tr>
+      <td>O Nome do Vento – Patrick Rothfuss</td>
+      <td>Arqueiro</td>
+      <td>12/06/2025</td>
+      <td>26/06/2025</td>
+      <td>016</td>
+      <td>3 dias</td>
+    </tr>
+    <tr>
+      <td>O Alquimista – Paulo Coelho</td>
+      <td>Rocco</td>
+      <td>10/05/2025</td>
+      <td>24/05/2025</td>
+      <td>017</td>
+      <td>36 dias</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+      <div id="devolvidos" class="aba-conteudo">
+<table>
+  <thead>
+    <tr>
+      <th>Nome do livro</th>
+      <th>Editora</th>
+      <th>Empréstimo</th>
+      <th>Data de devolução</th>
+      <th>Código do livro</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O Sol é Para Todos – Harper Lee</td>
+      <td>José Olympio</td>
+      <td>05/06/2025</td>
+      <td>18/06/2025</td>
+      <td>021</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>Percy Jackson e o Ladrão de Raios – Rick Riordan</td>
+      <td>Intrínseca</td>
+      <td>02/06/2025</td>
+      <td>16/06/2025</td>
+      <td>022</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>A Culpa é das Estrelas – John Green</td>
+      <td>Intrínseca</td>
+      <td>10/05/2025</td>
+      <td>24/05/2025</td>
+      <td>023</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>Orgulho e Preconceito – Jane Austen</td>
+      <td>Martin Claret</td>
+      <td>08/06/2025</td>
+      <td>22/06/2025</td>
+      <td>024</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>O Hobbit – J.R.R. Tolkien</td>
+      <td>Martins Fontes</td>
+      <td>01/06/2025</td>
+      <td>15/06/2025</td>
+      <td>025</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>Maze Runner: Correr ou Morrer – James Dashner</td>
+      <td>V&R Editoras</td>
+      <td>20/05/2025</td>
+      <td>05/06/2025</td>
+      <td>026</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>As Crônicas de Nárnia – C.S. Lewis</td>
+      <td>WMF Martins Fontes</td>
+      <td>03/06/2025</td>
+      <td>17/06/2025</td>
+      <td>027</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+      <div id="historico" class="aba-conteudo">
+        <table>
+  <thead>
+    <tr>
+      <th>Nome do livro</th>
+      <th>Editora</th>
+      <th>Empréstimo</th>
+      <th>Data de devolução</th>
+      <th>Código do livro</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O Alquimista – Paulo Coelho</td>
+      <td>Rocco</td>
+      <td>10/05/2025</td>
+      <td>24/05/2025</td>
+      <td>017</td>
+      <td>Atrasado</td>
+    </tr>
+    <tr>
+      <td>Cem Anos de Solidão – Gabriel Garcia Márquez</td>
+      <td>Record</td>
+      <td>15/05/2025</td>
+      <td>30/05/2025</td>
+      <td>015</td>
+      <td>Atrasado</td>
+    </tr>
+    <tr>
+      <td>As Crônicas de Nárnia – C.S. Lewis</td>
+      <td>WMF Martins Fontes</td>
+      <td>03/06/2025</td>
+      <td>17/06/2025</td>
+      <td>027</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>Maze Runner: Correr ou Morrer – James Dashner</td>
+      <td>V&R Editoras</td>
+      <td>20/05/2025</td>
+      <td>05/06/2025</td>
+      <td>026</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>A Culpa é das Estrelas – John Green</td>
+      <td>Intrínseca</td>
+      <td>10/05/2025</td>
+      <td>24/05/2025</td>
+      <td>023</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>Percy Jackson e o Ladrão de Raios – Rick Riordan</td>
+      <td>Intrínseca</td>
+      <td>02/06/2025</td>
+      <td>16/06/2025</td>
+      <td>022</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+    <tr>
+      <td>O Sol É Para Todos – Harper Lee</td>
+      <td>José Olympio</td>
+      <td>05/06/2025</td>
+      <td>18/06/2025</td>
+      <td>021</td>
+      <td>Devolvido no prazo</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <img src="WDA GROUP LOGO (1).png" alt="Logo" class="logo-rodape" />
+    </main>
+  </div>
+
+  <div id="search-popup" class="search-popup">
+    <div class="search-popup-content">
+      <div class="search-input-group">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Procurar livros" class="search-input">
+      </div>
+      <div class="search-input-group active-search-input">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" value="O Pequeno Príncipe" class="search-input">
+      </div>
+      <ul class="search-suggestions">
+        <li class="suggestion-item active">O Pequeno Príncipe</li>
+        <li class="suggestion-item">O Menino Maluquinho</li>
+        <li class="suggestion-item">O Pequeno Nicolau</li>
+        <li class="suggestion-item">O Jovem Príncipe</li>
+        <li class="suggestion-item">O Grande Gatsby</li>
+        <li class="suggestion-item">O Último Samurai</li>
+        <li class="suggestion-item">O Pequeno Vampiro</li>
+        <li class="suggestion-item">O Silencioso Viajante</li>
+        <li class="suggestion-item">O Jovem Rei</li>
+        <li class="suggestion-item">O Pequeno Mago</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="user-account-popup" class="user-account-popup">
+    <div class="user-account-popup-content">
+      <img src="WDA GROUP LOGO (1).png" alt="Logo WDA" class="user-account-logo">
+      <div class="user-icon-circle">
+        <i class="fas fa-user-circle user-circle-icon"></i>
+      </div>
+      <h3 class="user-name">RONALDO MENDES</h3>
+      <div class="user-stats-box">
+        <p><strong>Data de criação da conta:</strong> 01/05/2025</p>
+        <p><strong>Total de livros locados:</strong> 30</p>
+        <p><strong>Atrasados:</strong> 10</p>
+        <p><strong>Devolvidos:</strong> 10</p>
+        <p><strong>Emprestados:</strong> 10</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay"></div>
+
+  <script>
+    function mudarAba(id) {
+      document.querySelectorAll('.tab-item').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.aba-conteudo').forEach(conteudo => conteudo.classList.remove('active'));
+
+      document.querySelector(`[onclick="mudarAba('${id}')"]`).classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Script para o pop-up de pesquisa
+    const searchBtn = document.getElementById('pesquisar-btn');
+    const searchPopup = document.getElementById('search-popup');
+    const overlay = document.getElementById('overlay'); // Reutilizando o overlay existente
+
+    searchBtn.addEventListener('click', () => {
+      searchPopup.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    // Script para o NOVO pop-up da conta de usuário
+    const userAccountBtn = document.getElementById('conta-usuario-btn');
+    const userAccountPopup = document.getElementById('user-account-popup');
+
+    userAccountBtn.addEventListener('click', () => {
+      userAccountPopup.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    // Fechar qualquer pop-up ao clicar no overlay
+    overlay.addEventListener('click', () => {
+      searchPopup.classList.remove('active');
+      userAccountPopup.classList.remove('active'); // Adicionado para fechar o pop-up da conta de usuário
+      overlay.classList.remove('active');
+    });
+
+    // Script de verificação de login (mantido do seu dashboard.html)
+    const estaLogado = sessionStorage.getItem("logado") === "true";
+    if (!estaLogado) {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

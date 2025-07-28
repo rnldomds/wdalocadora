@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Clientes - Editor - Locadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos_dashboard_editor.css">
+    <link rel="stylesheet" href="estilos_mostrar_livros_editor.css">
+ </head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <img src="wda_group_logo.png" alt="Logo wda GROUP">
+                <span>LOCADORA DE LIVROS</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item menu-item-button active">
+                        <a href="mostrar_locatarios.html">
+                            <i class="fas fa-users"></i>
+                            <span>Mostrar Locatários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button"> <a href="mostrar_livros_editor.html">
+                            <i class="fas fa-book"></i>
+                            <span>Mostrar Livros</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_editoras.html"> <i class="fas fa-building"></i>
+                            <span>Mostrar Editoras</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_usuarios.html">
+                            <i class="fas fa-user"></i>
+                            <span>Mostrar Usuários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_alugueis.html">
+                            <i class="fas fa-handshake"></i>
+                            <span>Mostrar Aluguéis</span>
+                        </a>
+                    </li>
+                    <li class="menu-item-divider"></li>
+                    <li class="menu-item">
+                        <a href="dashboard_editor.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirPesquisa()">
+                            <i class="fas fa-search"></i>
+                            <span>Pesquisar</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirMinhaConta()">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Conta de Usuário</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-sair">
+                        <a href="#" onclick="confirmarLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h2>
+                    <i class="fas fa-users header-icon"></i> MOSTRANDO CLIENTES
+                </h2>
+                <p>Gerencie os clientes da locadora.</p>
+            </header>
+
+            <div class="content-section">
+                <div class="action-bar">
+                    <button class="add-button" onclick="abrirPopupNovoCliente()">
+                        <i class="fas fa-plus-circle"></i> Novo Cliente
+                    </button>
+                    <div class="search-input-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="inputPesquisaCliente" onkeyup="pesquisarClientesGrid()" placeholder="Pesquisar clientes por nome, e-mail, celular ou CPF...">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tabelalocatarios" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Celular</th>
+                                <th>CPF</th>
+                                <th>Endereço</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>João Silva</td>
+                                <td>joao.silva@email.com</td>
+                                <td>(11) 98765-4321</td>
+                                <td>123.456.789-00</td>
+                                <td>Rua A, 123 - Centro, São Paulo - SP</td>
+                                <td>
+                                    <button class="action-button edit-button" onclick="abrirPopupEditarCliente(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-button delete-button" onclick="abrirPopupExcluirCliente(this)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Maria Oliveira</td>
+                                <td>maria.o@email.com</td>
+                                <td>(21) 99876-1234</td>
+                                <td>987.654.321-01</td>
+                                <td>Av. B, 456 - Copacabana, Rio de Janeiro - RJ</td>
+                                <td>
+                                    <button class="action-button edit-button" onclick="abrirPopupEditarCliente(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-button delete-button" onclick="abrirPopupExcluirCliente(this)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Souza</td>
+                                <td>carlos.s@email.com</td>
+                                <td>(31) 97654-9876</td>
+                                <td>456.789.123-02</td>
+                                <td>Rua C, 789 - Savassi, Belo Horizonte - MG</td>
+                                <td>
+                                    <button class="action-button edit-button" onclick="abrirPopupEditarCliente(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-button delete-button" onclick="abrirPopupExcluirCliente(this)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="paginacao" class="paginacao"></div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    <div id="popupNovoCliente" class="modal">
+  <div class="modal-content">
+    <h3>Cadastrar Novo Locatário</h3>
+    <label for="novoNomeCliente">Nome:</label>
+    <input type="text" id="novoNomeCliente"><br>
+
+    <label for="novoEmailCliente">Email:</label>
+    <input type="" id="novoEmailCliente"><br>
+
+    <label for="novoCelularCliente">Celular:</label>
+    <input type="text" id="novoCelularCliente"><br>
+
+    <label for="novoCpfCliente">CPF:</label>
+    <input type="text" id="novoCpfCliente"><br>
+
+    <label for="novoEnderecoCliente">Endereço:</label>
+    <input type="text" id="novoEnderecoCliente"><br>
+
+    <button onclick="salvarNovoCliente()" class="modal-action-button primary-button">Salvar</button>
+            <button onclick="fecharPopupNovoCliente()" class="modal-action-button secondary-button">Cancelar</button>
+  </div>
+</div>
+<div id="popupEditarCliente" class="modal">
+  <div class="modal-content">
+    <h3>Editar Locatário</h3>
+    <label for="editarNomeCliente">Nome:</label>
+    <input type="text" id="editarNomeCliente"><br>
+
+    <label for="editarEmailCliente">Email:</label>
+    <input type="email" id="editarEmailCliente"><br>
+
+    <label for="editarCelularCliente">Celular:</label>
+    <input type="text" id="editarCelularCliente"><br>
+
+    <label for="editarCpfCliente">CPF:</label>
+    <input type="text" id="editarCpfCliente"><br>
+
+    <label for="editarEnderecoCliente">Endereço:</label>
+    <input type="text" id="editarEnderecoCliente"><br>
+
+    <button onclick="salvarEdicaoCliente()" class="modal-action-button primary-button">Salvar Edição</button>
+            <button onclick="fecharPopupEditarCliente()" class="modal-action-button secondary-button">Cancelar</button>
+  </div>
+</div>
+<div id="popupExcluirCliente" class="modal">
+  <div class="modal-content">
+    <h3>Excluir Locatário</h3>
+    <p>Tem certeza que deseja excluir este locatário?</p>
+    <button onclick="confirmarExclusaoCliente()" class="modal-action-button primary-button">Salvar Edição</button>
+            <button onclick="fecharPopupExcluirCliente()" class="modal-action-button secondary-button">Cancelar</button>
+  </div>
+</div>
+
+
+    <div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros (Sistema)</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o nome do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+            </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Minha Conta (Editor)</h3>
+            <p><strong>Nome:</strong> [Nome do Editor]</p>
+            <p><strong>Email:</strong> [email.editor@exemplo.com]</p>
+            <p><strong>Cargo:</strong> Editor/Funcionário</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <script src="common.js"></script> <script>
+        function abrirPopupNovoCliente() {
+    document.getElementById('popupNovoCliente').style.display = 'flex';
+
+    document.getElementById('novoNomeCliente').value = '';
+    document.getElementById('novoEmailCliente').value = '';
+    document.getElementById('novoTelefoneCliente').value = '';
+    document.getElementById('novoCPFCliente').value = '';
+    document.getElementById('novoEnderecoCliente').value = '';
+}
+
+function fecharPopupNovoCliente() {
+    document.getElementById('popupNovoCliente').style.display = 'none';
+}
+
+function salvarNovoCliente() {
+    const nome = document.getElementById('novoNomeCliente').value;
+    const email = document.getElementById('novoEmailCliente').value;
+    const telefone = document.getElementById('novoTelefoneCliente').value;
+    const cpf = document.getElementById('novoCPFCliente').value;
+    const endereco = document.getElementById('novoEnderecoCliente').value;
+
+    if (nome && email && telefone && cpf && endereco) {
+        const tabela = document.getElementById('tabelalocatarios').getElementsByTagName('tbody')[0];
+        const newRow = tabela.insertRow();
+
+        newRow.insertCell(0).textContent = nome;
+        newRow.insertCell(1).textContent = email;
+        newRow.insertCell(2).textContent = telefone;
+        newRow.insertCell(3).textContent = cpf;
+        newRow.insertCell(4).textContent = endereco;
+
+        const acoesCell = newRow.insertCell(5);
+        acoesCell.innerHTML = `
+            <button class="action-button edit-button" onclick="abrirPopupEditarCliente(this)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="action-button delete-button" onclick="abrirPopupExcluirCliente(this)">
+                <i class="fas fa-trash-alt"></i>
+            </button>`;
+
+        alert('Cliente cadastrado (simulado) com sucesso!');
+        fecharPopupNovoUsuario();
+    } else {
+        alert('Por favor, preencha todos os campos para cadastrar o usuário.');
+    }
+}
+
+function abrirPopupEditarCliente(buttonElement) {
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+
+    document.getElementById('popupEditarCliente').style.display = 'flex';
+    document.getElementById('editClienteRowIndex').value = rowIndex;
+    document.getElementById('editNomeUsuario').value = row.cells[0].textContent;
+    document.getElementById('editEmailUsuario').value = row.cells[1].textContent;
+    document.getElementById('editTelefoneUsuario').value = row.cells[2].textContent;
+    document.getElementById('editCPFUsuario').value = row.cells[3].textContent;
+    document.getElementById('editEnderecoUsuario').value = row.cells[4].textContent;
+}
+
+function fecharPopupEditarCliente() {
+    document.getElementById('popupEditarCliente').style.display = 'none';
+}
+
+function salvarEdicaoCliente() {
+    const rowIndex = document.getElementById('editClienteRowIndex').value;
+    const tabela = document.getElementById('tabelalocatarios').getElementsByTagName('tbody')[0];
+    const row = tabela.rows[rowIndex];
+
+    const nome = document.getElementById('editNomeUsuario').value;
+    const email = document.getElementById('editEmailUsuario').value;
+    const telefone = document.getElementById('editTelefoneUsuario').value;
+    const cpf = document.getElementById('editCPFUsuario').value;
+    const endereco = document.getElementById('editEnderecoUsuario').value;
+
+    if (nome && email && telefone && cpf && endereco) {
+        row.cells[0].textContent = nome;
+        row.cells[1].textContent = email;
+        row.cells[2].textContent = telefone;
+        row.cells[3].textContent = cpf;
+        row.cells[4].textContent = endereco;
+
+        alert('Usuário editado (simulado) com sucesso!');
+        fecharPopupEditarCliente();
+    } else {
+        alert('Por favor, preencha todos os campos para editar o usuário.');
+    }
+}
+
+function abrirPopupExcluirCliente(buttonElement) {
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+    const nome = row.cells[0].textContent;
+
+    document.getElementById('popupExcluirCliente').style.display = 'flex';
+    document.getElementById('excluirClienteRowIndex').value = rowIndex;
+    document.getElementById('usuarioExcluirNome').textContent = nome;
+}
+
+function fecharPopupExcluirCliente() {
+    document.getElementById('popupExcluirCliente').style.display = 'none';
+}
+
+function confirmarExclusaoCliente() {
+    const rowIndex = document.getElementById('excluirClienteRowIndex').value;
+    const tabela = document.getElementById('tabelalocatarios').getElementsByTagName('tbody')[0];
+    tabela.deleteRow(rowIndex);
+
+    alert('Usuário excluído (simulado) com sucesso!');
+    fecharPopupExcluirCliente();
+}
+
+        function pesquisarClientesGrid() {
+            const input = document.getElementById('inputPesquisaCliente').value.toLowerCase();
+            const tabela = document.getElementById('tabelalocatarios');
+            const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+            for (let i = 0; i < linhas.length; i++) {
+                const celulas = linhas[i].getElementsByTagName('td');
+                let found = false;
+                // Busca em Nome, Email, Celular, CPF
+                if (celulas[0].textContent.toLowerCase().includes(input) || // Nome
+                    celulas[1].textContent.toLowerCase().includes(input) || // Email
+                    celulas[2].textContent.toLowerCase().includes(input) || // Celular
+                    celulas[3].textContent.toLowerCase().includes(input)) { // CPF
+                    found = true;
+                }
+                linhas[i].style.display = found ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_cadastro.css">
+</head>
+<body>
+    <div class="container-geral">
+        <h1>LOCADORA DE LIVROS</h1> <h2>CADASTRO DE USUARIO</h2> <div class="caixa-cadastro">
+            <form action="#" method="POST">
+                <div class="grupo-campo">
+                    <span class="icone-campo icone-usuario"></span>
+                    <input type="text" id="nome" name="nome_usuario" placeholder="Digite Nome de usuário" required>
+                </div>
+                
+                <div class="grupo-campo">
+                    <span class="icone-campo icone-email"></span>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                </div>
+                
+                <div class="grupo-campo">
+                    <span class="icone-campo icone-senha"></span>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                
+                <div class="grupo-campo">
+                    <span class="icone-campo icone-senha"></span>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Digite sua senha novamente" required>
+                </div>
+                
+                <button type="submit" class="botao-confirmar">Confirmar</button>
+            </form>
+            <p class="link-login">Já possui uma conta? <a href="login.html">Faça login aqui</a></p>
+        </div>
+        <div class="container-logo">
+            <img src="wda_group_logo.png" alt="Logo wda GROUP">
+        </div>
+    </div>
+</body>
+</html>

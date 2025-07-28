@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Livros - Editor - Locadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos_dashboard_editor.css">
+    <link rel="stylesheet" href="estilos_mostrar_livros_editor.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <img src="wda_group_logo.png" alt="Logo wda GROUP">
+                <span>LOCADORA DE LIVROS</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_locatarios.html">
+                            <i class="fas fa-users"></i>
+                            <span>Mostrar Locatários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button"> <a href="mostrar_livros_editor.html">
+                            <i class="fas fa-book"></i>
+                            <span>Mostrar Livros</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_editoras.html"> <i class="fas fa-building"></i>
+                            <span>Mostrar Editoras</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_usuarios.html">
+                            <i class="fas fa-user"></i>
+                            <span>Mostrar Usuários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button active">
+                        <a href="mostrar_alugueis.html">
+                            <i class="fas fa-handshake"></i>
+                            <span>Mostrar Aluguéis</span>
+                        </a>
+                    </li>
+                    <li class="menu-item-divider"></li>
+                    <li class="menu-item">
+                        <a href="dashboard_editor.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirPesquisa()">
+                            <i class="fas fa-search"></i>
+                            <span>Pesquisar</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirMinhaConta()">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Conta de Usuário</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-sair">
+                        <a href="#" onclick="confirmarLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+<main class="main-content">
+            <header class="main-header">
+                <h2>
+                    <i class="fas fa-book-reader header-icon"></i> Lista de Aluguéis
+                </h2>
+                <p>Gerencie os alugueis de livros da locadora.</p>
+                
+            </header>
+            <div class="content-section">
+                <div class="action-bar">
+                    <button class="add-button" onclick="abrirPopupNovoAluguel()">
+                        <i class="fas fa-plus-circle"></i> Novo aluguel
+                    </button>
+                    <div class="search-input-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="inputPesquisaAluguel" onkeyup="pesquisarAlugueisGrid()" placeholder="Pesquisar aluguéis por usuário, livro ou data...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+<table id="tabelaAlugueis" class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Livro</th>
+      <th>Cliente</th>
+      <th>Data Aluguel</th>
+      <th>Data Devolução</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>001</td>
+      <td>A Revolução dos Bichos</td>
+      <td>João Silva</td>
+      <td>01/07/2025</td>
+      <td>31/07/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>Dom Quixote</td>
+      <td>Maria Souza</td>
+      <td>15/06/2025</td>
+      <td>15/07/2025</td>
+      <td>Finalizado</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>003</td>
+      <td>1984</td>
+      <td>Lucas Pereira</td>
+      <td>10/07/2025</td>
+      <td>09/08/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>004</td>
+      <td>O Pequeno Príncipe</td>
+      <td>João Silva</td>
+      <td>25/06/2025</td>
+      <td>25/07/2025</td>
+      <td>Finalizado</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>005</td>
+      <td>O Código Da Vinci</td>
+      <td>Ana Lima</td>
+      <td>03/07/2025</td>
+      <td>03/08/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>006</td>
+      <td>O Diário de Anne Frank</td>
+      <td>João Silva</td>
+      <td>28/06/2025</td>
+      <td>28/07/2025</td>
+      <td>Finalizado</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>007</td>
+      <td>O Senhor dos Anéis</td>
+      <td>Rafael Oliveira</td>
+      <td>12/07/2025</td>
+      <td>11/08/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>008</td>
+      <td>A Metamorfose</td>
+      <td>Fernanda Costa</td>
+      <td>01/07/2025</td>
+      <td>31/07/2025</td>
+      <td>Finalizado</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>009</td>
+      <td>A Garota no Trem</td>
+      <td>Bruno Martins</td>
+      <td>05/07/2025</td>
+      <td>04/08/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>010</td>
+      <td>Orgulho e Preconceito</td>
+      <td>Maria Souza</td>
+      <td>07/07/2025</td>
+      <td>06/08/2025</td>
+      <td>Pendente</td>
+      <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+    </div>
+<div id="popupNovoAluguel" class="modal">
+  <div class="modal-content">
+    <h3>Cadastrar Novo Aluguel</h3>
+
+    <label for="novoLivroAluguel">Livro:</label>
+    <input type="text" id="novoLivroAluguel" required><br>
+
+    <label for="novoClienteAluguel">Cliente:</label>
+    <input type="text" id="novoClienteAluguel" required><br>
+
+    <label for="novaDataAluguel">Data do Aluguel:</label>
+    <input type="date" id="novaDataAluguel" required><br>
+
+    <label for="novaDataDevolucao">Data de Devolução:</label>
+    <input type="date" id="novaDataDevolucao" required><br>
+
+    <label for="novoStatusAluguel">Status:</label>
+    <select id="novoStatusAluguel" required.>
+      <option value="Ativo">Ativo</option>
+      <option value="Devolvido no prazo">Devolvido no prazo</option>
+      <option value="Devolvido com atraso">Devolvido com atraso</option>.
+    </select><br>
+
+    <button onclick="salvarNovoAluguel()" class="modal-action-button primary-button">Salvar</button>
+    <button onclick="fecharPopupNovoAluguel()" class="modal-action-button secondary-button">Cancelar</button>
+  </div>
+</div>
+<div id="popupEditarAluguel" class="modal">
+  <div class="modal-content">
+    <h3>Editar Aluguel</h3>
+    <input type="hidden" id="editAluguelRowIndex">
+
+    <label for="editLivroAluguel">Livro:</label>
+    <input type="text" id="editLivroAluguel" required><br>
+
+    <label for="editClienteAluguel">Cliente:</label>
+    <input type="text" id="editClienteAluguel" required><br>
+
+    <label for="editDataAluguel">Data do Aluguel:</label>
+    <input type="date" id="editDataAluguel" required><br>
+
+    <label for="editDataDevolucao">Data de Devolução:</label>
+    <input type="date" id="editDataDevolucao" required><br>
+
+    <label for="editStatusAluguel">Status:</label>
+    <select id="editStatusAluguel" required>
+      <option value="Ativo">Ativo</option>
+      <option value="Devolvido no prazo">Devolvido no prazo</option>
+      <option value="Devolvido com atraso">Devolvido com atraso</option>
+    </select><br>
+
+    <button onclick="salvarEdicaoAluguel()" class="modal-action-button primary-button">Salvar Edição</button>
+    <button onclick="fecharPopupEditarAluguel()" class="modal-action-button secondary-button">Cancelar</button>
+  </div>
+</div>
+<div id="popupExcluirAluguel" class="modal">
+  <div class="modal-content">
+    <h3>Excluir Aluguel</h3>
+    <p>Tem certeza que deseja excluir o aluguel do livro: <strong id="aluguelExcluirNome"></strong>?</p>
+    <input type="hidden" id="excluirAluguelRowIndex">
+    <button onclick="confirmarExclusaoAluguel()" class="modal-action-button delete-button">Sim, Excluir</button>
+    <button onclick="fecharPopupExcluirAluguel()" class="modal-action-button secondary-button">Não, Cancelar</button>
+  </div>
+</div>
+<div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Minha Conta (Editor)</h3>
+            <p><strong>Nome:</strong> [Nome do Editor]</p>
+            <p><strong>Email:</strong> [email.editor@exemplo.com]</p>
+            <p><strong>Cargo:</strong> Editor/Funcionário</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+   <div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros (Sistema)</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o nome do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+                </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>   
+    <script src="common.js"></script><script>
+
+function abrirPopupNovoAluguel() {
+    document.getElementById('popupNovoAluguel').style.display = 'flex';
+
+    document.getElementById('novoUsuarioAluguel').value = '';
+    document.getElementById('novoLivroAluguel').value = '';
+    document.getElementById('novoDataInicio').value = '';
+    document.getElementById('novoDataFim').value = '';
+}
+
+// Fechar popup de novo aluguel
+function fecharPopupNovoAluguel() {
+    document.getElementById('popupNovoAluguel').style.display = 'none';
+}
+
+// Salvar novo aluguel (simulado)
+function salvarNovoAluguel() {
+    const usuario = document.getElementById('novoUsuarioAluguel').value;
+    const livro = document.getElementById('novoLivroAluguel').value;
+    const dataInicio = document.getElementById('novoDataInicio').value;
+    const dataFim = document.getElementById('novoDataFim').value;
+
+    if (usuario && livro && dataInicio && dataFim) {
+        const tabela = document.getElementById('tabelaAlugueis').getElementsByTagName('tbody')[0];
+        const newRow = tabela.insertRow();
+
+        newRow.insertCell(0).textContent = usuario;
+        newRow.insertCell(1).textContent = livro;
+        newRow.insertCell(2).textContent = dataInicio;
+        newRow.insertCell(3).textContent = dataFim;
+        newRow.insertCell(4).textContent = 'Ativo';
+
+        const acoesCell = newRow.insertCell(5);
+        acoesCell.innerHTML = `<button class="action-button edit-button" onclick="abrirPopupEditarAluguel(this)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-button delete-button" onclick="abrirPopupExcluirAluguel(this)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>`;
+
+        alert('Aluguel cadastrado (simulado) com sucesso!');
+        fecharPopupNovoAluguel();
+    } else {
+        alert('Por favor, preencha todos os campos para cadastrar o aluguel.');
+    }
+}
+
+// Abrir popup de edição
+function abrirPopupEditarAluguel(buttonElement) {
+    document.getElementById('popupEditarAluguel').style.display = 'flex';
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+
+    document.getElementById('editAluguelRowIndex').value = rowIndex;
+
+    document.getElementById('editUsuarioAluguel').value = row.cells[0].textContent;
+    document.getElementById('editLivroAluguel').value = row.cells[1].textContent;
+    document.getElementById('editDataInicio').value = row.cells[2].textContent;
+    document.getElementById('editDataFim').value = row.cells[3].textContent;
+}
+
+// Fechar popup de edição
+function fecharPopupEditarAluguel() {
+    document.getElementById('popupEditarAluguel').style.display = 'none';
+}
+
+// Salvar edição
+function salvarEdicaoAluguel() {
+    const rowIndex = document.getElementById('editAluguelRowIndex').value;
+    const tabela = document.getElementById('tabelaAlugueis').getElementsByTagName('tbody')[0];
+    const row = tabela.rows[rowIndex];
+
+    const usuario = document.getElementById('editUsuarioAluguel').value;
+    const livro = document.getElementById('editLivroAluguel').value;
+    const dataInicio = document.getElementById('editDataInicio').value;
+    const dataFim = document.getElementById('editDataFim').value;
+
+    if (usuario && livro && dataInicio && dataFim) {
+        row.cells[0].textContent = usuario;
+        row.cells[1].textContent = livro;
+        row.cells[2].textContent = dataInicio;
+        row.cells[3].textContent = dataFim;
+
+        alert('Aluguel editado (simulado) com sucesso!');
+        fecharPopupEditarAluguel();
+    } else {
+        alert('Por favor, preencha todos os campos para editar o aluguel.');
+    }
+}
+
+// Abrir popup de exclusão
+function abrirPopupExcluirAluguel(buttonElement) {
+    document.getElementById('popupExcluirAluguel').style.display = 'flex';
+    const row = buttonElement.closest('tr');
+    const rowIndex = row.rowIndex - 1;
+    const nomeLivro = row.cells[1].textContent;
+
+    document.getElementById('excluirAluguelRowIndex').value = rowIndex;
+    document.getElementById('aluguelExcluirLivro').textContent = nomeLivro;
+}
+
+// Fechar popup de exclusão
+function fecharPopupExcluirAluguel() {
+    document.getElementById('popupExcluirAluguel').style.display = 'none';
+}
+
+// Confirmar exclusão
+function confirmarExclusaoAluguel() {
+    const rowIndex = document.getElementById('excluirAluguelRowIndex').value;
+    const tabela = document.getElementById('tabelaAlugueis').getElementsByTagName('tbody')[0];
+    tabela.deleteRow(rowIndex);
+
+    alert('Aluguel excluído (simulado) com sucesso!');
+    fecharPopupExcluirAluguel();
+}
+
+
+
+
+        function abrirMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'flex';
+        }
+
+        function fecharMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'none';
+        }
+
+        function confirmarLogout() {
+            const confirmacao = confirm("Tem certeza que deseja sair?");
+            if (confirmacao) {
+                window.location.href = "login.html"; 
+            }
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', renderizarAlugueis);
+     function pesquisarAlugueisGrid() {
+    const input = document.getElementById('inputPesquisaAluguel').value.toLowerCase();
+    const tabela = document.getElementById('tabelaAlugueis');
+    const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    for (let i = 0; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        let found = false;
+
+        if (
+            celulas[0].textContent.toLowerCase().includes(input) || // Usuário
+            celulas[1].textContent.toLowerCase().includes(input) || // Livro
+            celulas[2].textContent.toLowerCase().includes(input) || // Data início
+            celulas[3].textContent.toLowerCase().includes(input)    // Data fim
+        ) {
+            found = true;
+        }
+
+        linhas[i].style.display = found ? "" : "none";
+    }
+}
+
+
+    </script>
+</body>
+</html>

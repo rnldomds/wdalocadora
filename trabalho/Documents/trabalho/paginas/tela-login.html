@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Locadora RNLD - Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-cabecalho">
+    <h3 class="Locadora-title">Locadora de Livros</h3>
+  </header>
+  
+  <div class="login-page"> 
+     <h2 class="login-title">Login</h2>
+    <div class="login-box">
+      
+      <form class="login-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite seu email" required />
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" required />
+<div class="user-role">
+  <label>Tipo de usuário:</label>
+  <div class="radio-group">
+    <label>
+      <input type="radio" name="role" value="leitor" required>
+      Leitor
+    </label>
+    <label>
+      <input type="radio" name="role" value="editor">
+      Editor
+    </label>
+  </div>
+</div>
+        <button type="submit">Confirmar</button>
+        <p class="signup-text">
+  Não tem uma conta?
+  <a href="tela-cadastro.html">Inscreva-se!</a>
+</p>
+      </form>
+    </div>
+    <img class="logo-embaixo" src="WDA GROUP LOGO (1).png" alt="Logo da Locadora">
+  </div>
+  <script>
+  const form = document.querySelector('.login-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio normal
+
+    // Aqui você pode validar o email e senha se quiser
+
+    // Simula login bem-sucedido
+    sessionStorage.setItem("logado", "true");
+
+    // Redireciona para o dashboard
+    window.location.href = "dashboard.html";
+  });
+</script>
+</body>
+</html>

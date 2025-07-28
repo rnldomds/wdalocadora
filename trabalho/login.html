@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Locadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_login.css">
+</head>
+<body>
+    <div class="container-geral">
+        <h1>LOCADORA DE LIVROS</h1>
+        <h2>LOGIN</h2>
+        <div class="caixa-login">
+            <form id="loginForm" method="POST" onsubmit="return handleLoginSubmit(event)"> 
+                <div class="grupo-campo">
+                    <label for="email">
+                        <span class="icone-campo"></span>
+                        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                    </label>
+                </div>
+                <div class="grupo-campo">
+                    <label for="senha">
+                        <span class="icone-campo"></span>
+                        <input type="password" id="senha" name="password" placeholder="Digite sua senha" required>
+                    </label>
+                </div>
+                <a href="recuperacao_senha.html" class="esqueceu-senha">esqueceu sua senha? <span style="color: #3ab5a3;">recuperar senha!</span></a>
+
+                <div class="grupo-checkbox">
+                    <label>
+                        <input type="radio" name="tipo_conta" value="leitor" checked> Leitor
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo_conta" value="editor"> Editor
+                    </label>
+                </div>
+
+                <button type="submit" class="botao-confirmar">Confirmar</button>
+            </form>
+            <p class="link-cadastro">Não tem uma conta? <a href="cadastro.html">Inscreva-se!</a></p>
+        </div>
+        <div class="container-logo">
+            <img src="wda_group_logo.png" alt="Logo wda GROUP">
+        </div>
+    </div>
+
+    <script>
+        function handleLoginSubmit(event) {
+            event.preventDefault(); 
+
+            
+            const tipoContaSelecionado = document.querySelector('input[name="tipo_conta"]:checked').value;
+            
+            if (tipoContaSelecionado === 'editor') {
+                window.location.href = "dashboard_editor.html";
+            } else { 
+                window.location.href = "dashboard.html"; 
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros - Locadora de Livros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos_livros.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <img src="wda_group_logo.png" alt="Logo wda GROUP">
+                <span>LOCADORA DE LIVROS</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item">
+                        <a href="dashboard.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item active"> <i class="fas fa-book"></i>
+                        <span>Livros</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirPesquisa()">
+                            <i class="fas fa-search"></i>
+                            <span>Pesquisar</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirMinhaConta()">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Conta de Usuário</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-sair">
+                        <a href="#" onclick="confirmarLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h2>
+                    <i class="fas fa-book-open header-icon"></i>
+                    LIVROS
+                </h2>
+                <p>Confira nosso acervo completo de livros disponíveis.</p>
+            </header>
+
+            <div class="livros-catalogo">
+                <div class="table-responsive">
+                    <table id="tabelaLivros">
+                        <thead>
+                            <tr>
+                                <th>CÓDIGO DO LIVRO</th>
+                                <th>NOME DO LIVRO</th>
+                                <th>EDITORA DO LIVRO</th>
+                                <th>AUTOR DO LIVRO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">001</td>
+                                <td data-label="NOME DO LIVRO">DOM CASMURRO</td>
+                                <td data-label="EDITORA DO LIVRO">EDITORA ÁTICA</td>
+                                <td data-label="AUTOR DO LIVRO">MACHADO DE ASSIS</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">002</td>
+                                <td data-label="NOME DO LIVRO">1984</td>
+                                <td data-label="EDITORA DO LIVRO">COMPANHIA DAS LETRAS</td>
+                                <td data-label="AUTOR DO LIVRO">GEORGE ORWELL</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">003</td>
+                                <td data-label="NOME DO LIVRO">O PEQUENO PRÍNCIPE</td>
+                                <td data-label="EDITORA DO LIVRO">AGIR</td>
+                                <td data-label="AUTOR DO LIVRO">ANTOINE DE SAINT-EXUPÉRY</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">004</td>
+                                <td data-label="NOME DO LIVRO">CAPITÃES DA AREIA</td>
+                                <td data-label="EDITORA DO LIVRO">COMPANHIA DAS LETRAS</td>
+                                <td data-label="AUTOR DO LIVRO">JORGE AMADO</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">005</td>
+                                <td data-label="NOME DO LIVRO">HARRY POTTER E A PEDRA FILOSOFAL</td>
+                                <td data-label="EDITORA DO LIVRO">ROCCO</td>
+                                <td data-label="AUTOR DO LIVRO">J.K. ROWLING</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">006</td>
+                                <td data-label="NOME DO LIVRO">A REVOLUÇÃO DOS BICHOS</td>
+                                <td data-label="EDITORA DO LIVRO">COMPANHIA DAS LETRAS</td>
+                                <td data-label="AUTOR DO LIVRO">GEORGE ORWELL</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">007</td>
+                                <td data-label="NOME DO LIVRO">A MENINA QUE ROUBAVA LIVROS</td>
+                                <td data-label="EDITORA DO LIVRO">INTRÍNSECA</td>
+                                <td data-label="AUTOR DO LIVRO">MARKUS ZUSAK</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">008</td>
+                                <td data-label="NOME DO LIVRO">O SENHOR DOS ANÉIS: A SOCIEDADE DO ANEL</td>
+                                <td data-label="EDITORA DO LIVRO">MARTINS FONTES</td>
+                                <td data-label="AUTOR DO LIVRO">J.R.R. TOLKIEN</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">009</td>
+                                <td data-label="NOME DO LIVRO">O CÓDIGO DA VINCI</td>
+                                <td data-label="EDITORA DO LIVRO">ARQUEIRO</td>
+                                <td data-label="AUTOR DO LIVRO">DAN BROWN</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">010</td>
+                                <td data-label="NOME DO LIVRO">O DIÁRIO DE ANNE FRANK</td>
+                                <td data-label="EDITORA DO LIVRO">RECORD</td>
+                                <td data-label="AUTOR DO LIVRO">ANNE FRANK</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">011</td>
+                                <td data-label="NOME DO LIVRO">ENSAIO SOBRE A CEGUEIRA</td>
+                                <td data-label="EDITORA DO LIVRO">COMPANHIA DAS LETRAS</td>
+                                <td data-label="AUTOR DO LIVRO">JOSÉ SARAMAGO</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">012</td>
+                                <td data-label="NOME DO LIVRO">A METAMORFOSE</td>
+                                <td data-label="EDITORA DO LIVRO">L&PM EDITORES</td>
+                                <td data-label="AUTOR DO LIVRO">FRANZ KAFKA</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">013</td>
+                                <td data-label="NOME DO LIVRO">MEMÓRIAS PÓSTUMAS DE BRÁS CUBAS</td>
+                                <td data-label="EDITORA DO LIVRO">NOVA FRONTEIRA</td>
+                                <td data-label="AUTOR DO LIVRO">MACHADO DE ASSIS</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">014</td>
+                                <td data-label="NOME DO LIVRO">IT: A COISA</td>
+                                <td data-label="EDITORA DO LIVRO">SUMA DE LETRAS</td>
+                                <td data-label="AUTOR DO LIVRO">STEPHEN KING</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">015</td>
+                                <td data-label="NOME DO LIVRO">CEM ANOS DE SOLIDÃO</td>
+                                <td data-label="EDITORA DO LIVRO">RECORD</td>
+                                <td data-label="AUTOR DO LIVRO">GABRIEL GARCÍA MÁRQUEZ</td>
+                            </tr>
+                            <tr>
+                                <td data-label="CÓDIGO DO LIVRO">016</td>
+                                <td data-label="NOME DO LIVRO">O ALQUIMISTA</td>
+                                <td data-label="EDITORA DO LIVRO">ROCCO</td>
+                                <td data-label="AUTOR DO LIVRO">PAULO COELHO</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o código, nome, autor ou editora do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+                </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Conta de Usuário</h3>
+            <p><strong>Nome:</strong> [Nome do Usuário]</p>
+            <p><strong>Email:</strong> [email@exemplo.com]</p>
+            <p><strong>Telefone:</strong> [telefone]</p>
+            <p><strong>Endereço:</strong> [endereço completo]</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function abrirPesquisa() {
+            document.getElementById('popupPesquisa').style.display = 'flex';
+            filtrarLivros(); 
+        }
+
+        function fecharPesquisa() {
+            document.getElementById('popupPesquisa').style.display = 'none';
+        }
+
+        function filtrarLivros() {
+            const termo = document.getElementById('campoPesquisa').value.toLowerCase();
+            const listaResultados = document.getElementById('listaResultadosPesquisa');
+            listaResultados.innerHTML = ''; 
+
+            const tabelaLivros = document.getElementById('tabelaLivros');
+            const linhas = tabelaLivros.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+            let resultadosEncontrados = [];
+
+            for (let i = 0; i < linhas.length; i++) {
+                const celulas = linhas[i].getElementsByTagName('td');
+                const codigo = celulas[0].textContent.toLowerCase();
+                const nomeLivro = celulas[1].textContent.toLowerCase();
+                const editora = celulas[2].textContent.toLowerCase();
+                const autor = celulas[3].textContent.toLowerCase();
+
+                
+                if (codigo.includes(termo) || nomeLivro.includes(termo) || editora.includes(termo) || autor.includes(termo)) {
+                    
+                    resultadosEncontrados.push(celulas[1].textContent + " (Autor: " + celulas[3].textContent + ")");
+                }
+            }
+
+            if (resultadosEncontrados.length > 0) {
+                resultadosEncontrados.forEach(livro => {
+                    const li = document.createElement('li');
+                    li.textContent = livro;
+                    listaResultados.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = "Nenhum livro encontrado com os critérios fornecidos.";
+                listaResultados.appendChild(li);
+            }
+        }
+
+        function abrirMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'flex';
+        }
+
+        function fecharMinhaConta() {
+            document.getElementById('popupMinhaConta').style.display = 'none';
+        }
+
+        function confirmarLogout() {
+            const confirmacao = confirm("Tem certeza que deseja sair?");
+            if (confirmacao) {
+                window.location.href = "login.html"; 
+            }
+        }
+    </script>
+</body>
+</html>

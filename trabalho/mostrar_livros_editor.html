@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Livros - Editor - Locadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos_dashboard_editor.css">
+    <link rel="stylesheet" href="estilos_mostrar_livros_editor.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <img src="wda_group_logo.png" alt="Logo wda GROUP">
+                <span>LOCADORA DE LIVROS</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_locatarios.html">
+                            <i class="fas fa-users"></i>
+                            <span>Mostrar Locatários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button active"> <a href="mostrar_livros_editor.html">
+                            <i class="fas fa-book"></i>
+                            <span>Mostrar Livros</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_editoras.html"> <i class="fas fa-building"></i>
+                            <span>Mostrar Editoras</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_usuarios.html">
+                            <i class="fas fa-user"></i>
+                            <span>Mostrar Usuários</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-button">
+                        <a href="mostrar_alugueis.html">
+                            <i class="fas fa-handshake"></i>
+                            <span>Mostrar Aluguéis</span>
+                        </a>
+                    </li>
+                    <li class="menu-item-divider"></li>
+                    <li class="menu-item">
+                        <a href="dashboard_editor.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirPesquisa()">
+                            <i class="fas fa-search"></i>
+                            <span>Pesquisar</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" onclick="abrirMinhaConta()">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Conta de Usuário</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-sair">
+                        <a href="#" onclick="confirmarLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h2>
+                    <i class="fas fa-book-reader header-icon"></i> MOSTRANDO LIVROS
+                </h2>
+                <p>Gerencie o catálogo de livros da locadora.</p>
+            </header>
+
+            <div class="content-section">
+                <div class="action-bar">
+                    <button class="add-button" onclick="abrirPopupNovoLivro()">
+                        <i class="fas fa-plus-circle"></i> Novo Livro
+                    </button>
+                    <div class="search-input-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="inputPesquisaLivro" onkeyup="pesquisarLivrosGrid()" placeholder="Pesquisar livros...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="tabelaLivros" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Estoque</th>
+                                <th>Data de Lançamento</th>
+                                <th>Nome do Livro</th>
+                                <th>Editora do Livro</th>
+                                <th>Autor do Livro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+<tr>
+    <td>1</td>
+    <td>06/04/1943</td>
+    <td>O Pequeno Príncipe</td>
+    <td>Agir</td>
+    <td>Antoine de Saint-Exupéry</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>08/06/1949</td>
+    <td>1984</td>
+    <td>Companhia das Letras</td>
+    <td>George Orwell</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>26/06/1997</td>
+    <td>Harry Potter e a Pedra Filosofal</td>
+    <td>Rocco</td>
+    <td>J.K. Rowling</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>01/01/1899</td>
+    <td>Dom Casmurro</td>
+    <td>Editora Ática</td>
+    <td>Machado de Assis</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>5</td>
+    <td>01/01/1932</td>
+    <td>Admirável Mundo Novo</td>
+    <td>Biblioteca Azul</td>
+    <td>Aldous Huxley</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>6</td>
+    <td>18/03/2003</td>
+    <td>O Código Da Vinci</td>
+    <td>Sextante</td>
+    <td>Dan Brown</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>7</td>
+    <td>25/06/1947</td>
+    <td>O Diário de Anne Frank</td>
+    <td>Record</td>
+    <td>Anne Frank</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>8</td>
+    <td>17/08/1945</td>
+    <td>A Revolução dos Bichos</td>
+    <td>Companhia das Letras</td>
+    <td>George Orwell</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>9</td>
+    <td>29/07/1954</td>
+    <td>O Senhor dos Anéis</td>
+    <td>Martins Fontes</td>
+    <td>J.R.R. Tolkien</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>10</td>
+    <td>01/01/1937</td>
+    <td>Capitães da Areia</td>
+    <td>Companhia das Letras</td>
+    <td>Jorge Amado</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>11</td>
+    <td>01/01/1995</td>
+    <td>Ensaio sobre a Cegueira</td>
+    <td>Companhia das Letras</td>
+    <td>José Saramago</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>12</td>
+    <td>01/01/1915</td>
+    <td>A Metamorfose</td>
+    <td>Penguin-Companhia</td>
+    <td>Franz Kafka</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>13</td>
+    <td>01/01/1988</td>
+    <td>O Alquimista</td>
+    <td>Rocco</td>
+    <td>Paulo Coelho</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>14</td>
+    <td>01/01/1967</td>
+    <td>Cem Anos de Solidão</td>
+    <td>Record</td>
+    <td>Gabriel García Márquez</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>15</td>
+    <td>01/01/1881</td>
+    <td>Memórias Póstumas de Brás Cubas</td>
+    <td>Editora Ática</td>
+    <td>Machado de Assis</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>16</td>
+    <td>06/05/2015</td>
+    <td>A Garota no Trem</td>
+    <td>Record</td>
+    <td>Paula Hawkins</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>17</td>
+    <td>01/01/1847</td>
+    <td>O Morro dos Ventos Uivantes</td>
+    <td>L&PM</td>
+    <td>Emily Brontë</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>18</td>
+    <td>01/01/1960</td>
+    <td>O Sol é Para Todos</td>
+    <td>José Olympio</td>
+    <td>Harper Lee</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>19</td>
+    <td>10/01/2012</td>
+    <td>A Culpa é das Estrelas</td>
+    <td>Intrínseca</td>
+    <td>John Green</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>20</td>
+    <td>01/01/2007</td>
+    <td>A Menina que Roubava Livros</td>
+    <td>Intrínseca</td>
+    <td>Markus Zusak</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>21</td>
+    <td>21/09/1937</td>
+    <td>O Hobbit</td>
+    <td>Martins Fontes</td>
+    <td>J.R.R. Tolkien</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>22</td>
+    <td>28/01/1813</td>
+    <td>Orgulho e Preconceito</td>
+    <td>L&PM</td>
+    <td>Jane Austen</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>23</td>
+    <td>01/01/1982</td>
+    <td>A Casa dos Espíritos</td>
+    <td>Bertrand Brasil</td>
+    <td>Isabel Allende</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+<tr>
+    <td>24</td>
+    <td>04/10/1950</td>
+    <td>As Crônicas de Nárnia</td>
+    <td>WMF Martins Fontes</td>
+    <td>C.S. Lewis</td>
+    <td>
+        <button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+
+                        </tbody>
+                    </table>
+                    <div id="paginacao" class="paginacao"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="popupNovoLivro" class="modal">
+        <div class="modal-content">
+            <h3>Cadastrar Novo Livro</h3>
+            <label for="novoNomeLivro">Nome do Livro:</label>
+            <input type="text" id="novoNomeLivro" required><br>
+            <label for="novoAutorLivro">Nome do Autor:</label>
+            <input type="text" id="novoAutorLivro" required><br>
+            <label for="novoEditoraLivro">Nome da Editora:</label>
+            <input type="text" id="novoEditoraLivro" required><br>
+            <label for="novoDataLancamento">Data de Lançamento:</label>
+            <input type="date" id="novoDataLancamento" required><br>
+            <label for="novoEstoque">Quantidade de Estoque:</label>
+            <input type="number" id="novoEstoque" required><br>
+            <button onclick="salvarNovoLivro()" class="modal-action-button primary-button">Salvar</button>
+            <button onclick="fecharPopupNovoLivro()" class="modal-action-button secondary-button">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="popupEditarLivro" class="modal">
+        <div class="modal-content">
+            <h3>Editar Livro</h3>
+            <input type="hidden" id="editLivroRowIndex">
+            <label for="editNomeLivro">Nome do Livro:</label>
+            <input type="text" id="editNomeLivro" required><br>
+            <label for="editAutorLivro">Nome do Autor:</label>
+            <input type="text" id="editAutorLivro" required><br>
+            <label for="editEditoraLivro">Nome da Editora:</label>
+            <input type="text" id="editEditoraLivro" required><br>
+            <label for="editDataLancamento">Data de Lançamento:</label>
+            <input type="date" id="editDataLancamento" required><br>
+            <label for="editEstoque">Quantidade de Estoque:</label>
+            <input type="number" id="editEstoque" required><br>
+            <button onclick="salvarEdicaoLivro()" class="modal-action-button primary-button">Salvar Edição</button>
+            <button onclick="fecharPopupEditarLivro()" class="modal-action-button secondary-button">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="popupExcluirLivro" class="modal">
+        <div class="modal-content">
+            <h3>Excluir Livro</h3>
+            <p>Tem certeza que deseja excluir o livro: <strong id="livroExcluirNome"></strong>?</p>
+            <input type="hidden" id="excluirLivroRowIndex">
+            <button onclick="confirmarExclusaoLivro()" class="modal-action-button delete-button">Sim, Excluir</button>
+            <button onclick="fecharPopupExcluirLivro()" class="modal-action-button secondary-button">Não, Cancelar</button>
+        </div>
+    </div>
+
+    <div id="popupPesquisa" class="modal">
+        <div class="modal-content">
+            <h3>Pesquisar Livros (Sistema)</h3>
+            <input type="text" id="campoPesquisa" onkeyup="filtrarLivros()" placeholder="Digite o nome do livro...">
+            <h4>Resultados:</h4>
+            <ul id="listaResultadosPesquisa">
+                </ul>
+            <button onclick="fecharPesquisa()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupMinhaConta" class="modal">
+        <div class="modal-content">
+            <h3>Minha Conta (Editor)</h3>
+            <p><strong>Nome:</strong> [Nome do Editor]</p>
+            <p><strong>Email:</strong> [email.editor@exemplo.com]</p>
+            <p><strong>Cargo:</strong> Editor/Funcionário</p>
+            <button onclick="fecharMinhaConta()" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <script src="common.js"></script> <script>
+        const linhasPorPagina = 10;
+  let paginaAtual = 1;
+
+  function paginarTabela() {
+    const tabela = document.getElementById("tabelaLivros");
+    const linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    const totalPaginas = Math.ceil(linhas.length / linhasPorPagina);
+
+    // Oculta todas as linhas
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = "none";
+    }
+
+    // Mostra apenas as da página atual
+    const inicio = (paginaAtual - 1) * linhasPorPagina;
+    const fim = inicio + linhasPorPagina;
+    for (let i = inicio; i < fim && i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+
+    // Cria os botões de navegação
+    const paginacaoDiv = document.getElementById("paginacao");
+    paginacaoDiv.innerHTML = "";
+
+    for (let i = 1; i <= totalPaginas; i++) {
+      const botao = document.createElement("button");
+      botao.textContent = i;
+      botao.className = i === paginaAtual ? "pagina ativa" : "pagina";
+      botao.onclick = () => {
+        paginaAtual = i;
+        paginarTabela();
+      };
+      paginacaoDiv.appendChild(botao);
+    }
+  }
+
+  // Iniciar a paginação após carregar a página
+  window.onload = function () {
+    paginarTabela();
+  };
+        function abrirPopupNovoLivro() {
+            document.getElementById('popupNovoLivro').style.display = 'flex';
+            
+            document.getElementById('novoNomeLivro').value = '';
+            document.getElementById('novoAutorLivro').value = '';
+            document.getElementById('novoEditoraLivro').value = '';
+            document.getElementById('novoDataLancamento').value = '';
+            document.getElementById('novoEstoque').value = '';
+        }
+
+        function fecharPopupNovoLivro() {
+            document.getElementById('popupNovoLivro').style.display = 'none';
+        }
+
+        function salvarNovoLivro() {
+            const nome = document.getElementById('novoNomeLivro').value;
+            const autor = document.getElementById('novoAutorLivro').value;
+            const editora = document.getElementById('novoEditoraLivro').value;
+            const dataLancamento = document.getElementById('novoDataLancamento').value;
+            const estoque = document.getElementById('novoEstoque').value;
+
+            if (nome && autor && editora && dataLancamento && estoque) {
+                const tabela = document.getElementById('tabelaLivros').getElementsByTagName('tbody')[0];
+                const newRow = tabela.insertRow();
+
+                newRow.insertCell(0).textContent = estoque;
+                newRow.insertCell(1).textContent = dataLancamento;
+                newRow.insertCell(2).textContent = nome;
+                newRow.insertCell(3).textContent = editora;
+                newRow.insertCell(4).textContent = autor;
+                
+                const acoesCell = newRow.insertCell(5);
+                acoesCell.innerHTML = `<button class="action-button edit-button" onclick="abrirPopupEditarLivro(this)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-button delete-button" onclick="abrirPopupExcluirLivro(this)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>`;
+
+                alert('Livro cadastrado (simulado) com sucesso!');
+                fecharPopupNovoLivro();
+            } else {
+                alert('Por favor, preencha todos os campos para cadastrar o livro.');
+            }
+        }
+
+        function abrirPopupEditarLivro(buttonElement) {
+            document.getElementById('popupEditarLivro').style.display = 'flex'; 
+            const row = buttonElement.closest('tr');
+            const rowIndex = row.rowIndex - 1;
+
+            document.getElementById('editLivroRowIndex').value = rowIndex;
+
+            document.getElementById('editEstoque').value = row.cells[0].textContent;
+            document.getElementById('editDataLancamento').value = row.cells[1].textContent;
+            document.getElementById('editNomeLivro').value = row.cells[2].textContent;
+            document.getElementById('editEditoraLivro').value = row.cells[3].textContent;
+            document.getElementById('editAutorLivro').value = row.cells[4].textContent;
+        }
+
+        function fecharPopupEditarLivro() {
+            document.getElementById('popupEditarLivro').style.display = 'none';
+        }
+
+        function salvarEdicaoLivro() {
+            const rowIndex = document.getElementById('editLivroRowIndex').value;
+            const tabela = document.getElementById('tabelaLivros').getElementsByTagName('tbody')[0];
+            const row = tabela.rows[rowIndex];
+
+            const nome = document.getElementById('editNomeLivro').value;
+            const autor = document.getElementById('editAutorLivro').value;
+            const editora = document.getElementById('editEditoraLivro').value;
+            const dataLancamento = document.getElementById('editDataLancamento').value;
+            const estoque = document.getElementById('editEstoque').value;
+            
+            if (parseInt(estoque) < 0) {
+                alert("Estoque não pode ser negativo.");
+                return;
+            }
+
+            if (nome && autor && editora && dataLancamento && estoque) {
+                row.cells[0].textContent = estoque;
+                row.cells[1].textContent = dataLancamento;
+                row.cells[2].textContent = nome;
+                row.cells[3].textContent = editora;
+                row.cells[4].textContent = autor;
+
+                alert('Livro editado (simulado) com sucesso!');
+                fecharPopupEditarLivro();
+            } else {
+                alert('Por favor, preencha todos os campos para editar o livro.');
+            }
+        }
+
+        function abrirPopupExcluirLivro(buttonElement) {
+            document.getElementById('popupExcluirLivro').style.display = 'flex'; 
+            const row = buttonElement.closest('tr');
+            const rowIndex = row.rowIndex - 1;
+            const nomeLivro = row.cells[2].textContent;
+
+            document.getElementById('excluirLivroRowIndex').value = rowIndex;
+            document.getElementById('livroExcluirNome').textContent = nomeLivro;
+        }
+
+        function fecharPopupExcluirLivro() {
+            document.getElementById('popupExcluirLivro').style.display = 'none';
+        }
+
+        function confirmarExclusaoLivro() {
+            const rowIndex = document.getElementById('excluirLivroRowIndex').value;
+            const tabela = document.getElementById('tabelaLivros').getElementsByTagName('tbody')[0];
+            const row = tabela.rows[rowIndex];
+
+            const estoqueAtual = parseInt(row.cells[0].textContent);
+            if (estoqueAtual === 0) {
+                alert("Não é possível excluir este livro pois há exemplares alugados.");
+                fecharPopupExcluirLivro();
+                return;
+            }
+
+            tabela.deleteRow(rowIndex);
+            alert('Livro excluído (simulado) com sucesso!');
+            fecharPopupExcluirLivro();
+        }
+        function pesquisarLivrosGrid() {
+            const input = document.getElementById('inputPesquisaLivro').value.toLowerCase();
+            const tabela = document.getElementById('tabelaLivros');
+            const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+            for (let i = 0; i < linhas.length; i++) {
+                const celulas = linhas[i].getElementsByTagName('td');
+                let found = false;
+               
+                if (celulas[1].textContent.toLowerCase().includes(input) || 
+                    celulas[2].textContent.toLowerCase().includes(input) || 
+                    celulas[3].textContent.toLowerCase().includes(input) || 
+                    celulas[4].textContent.toLowerCase().includes(input)) { 
+                    found = true;
+                }
+                linhas[i].style.display = found ? "" : "none";
+            }
+        }
+function confirmarLogout() {
+    const confirmacao = confirm("Tem certeza que deseja sair?");
+    if (confirmacao) {
+        
+        window.location.href = "login.html"; 
+    }
+}
+    </script>
+</body>
+</html>
